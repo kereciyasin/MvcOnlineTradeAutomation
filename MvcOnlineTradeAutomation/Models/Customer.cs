@@ -8,15 +8,15 @@ namespace MvcOnlineTradeAutomation.Models
 {
     public class Customer
     {
-        [Key]
-        public int CustomerID { get; set; }
-
+        [Key] public int CustomerID { get; set; }
         public string FirstName { get; set; }
-
         public string LastName { get; set; }
-
+        public string CompanyTitle { get; set; }
         public string City { get; set; }
-
         public string Email { get; set; }
+
+        public virtual ICollection<SalesTransaction> SalesTransactions { get; set; }
+
+
     }
 }
