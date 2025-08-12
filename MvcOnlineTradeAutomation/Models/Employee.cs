@@ -14,5 +14,8 @@ namespace MvcOnlineTradeAutomation.Models
         public string ImageUrl { get; set; }
 
         public virtual ICollection<SalesTransaction> SalesTransactions { get; set; }
+        // FK to Department
+        public int DepartmentID { get; set; }
+        public virtual Department Department { get; set; }
     }
 }
