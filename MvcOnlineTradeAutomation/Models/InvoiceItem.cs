@@ -18,5 +18,9 @@ namespace MvcOnlineTradeAutomation.Models
         public decimal UnitPrice { get; set; }
 
         public decimal Total { get; set; }
+
+        // INVOICE ITEM RELATED TO INVOICE
+        public int InvoiceID { get; set; }
+        public virtual Invoice Invoice { get; set; }
     }
 }

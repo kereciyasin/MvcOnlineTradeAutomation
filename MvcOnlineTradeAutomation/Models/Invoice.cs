@@ -24,5 +24,8 @@ namespace MvcOnlineTradeAutomation.Models
         public string DeliveredBy { get; set; }
 
         public string ReceivedBy { get; set; }
+
+        // Invoice items are related to the Invoice
+        public ICollection<InvoiceItem> InvoiceItems { get; set; }
     }
 }
