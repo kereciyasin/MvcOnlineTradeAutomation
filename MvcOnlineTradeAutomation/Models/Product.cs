@@ -23,5 +23,9 @@ namespace MvcOnlineTradeAutomation.Models
 
         public bool Status { get; set; }
         public string ImageUrl { get; set; }
+
+        // Category relationship    
+        public int CategoryID { get; set; }
+        public virtual Category Category { get; set; }
     }
 }
