@@ -4,6 +4,7 @@ using System.Linq;
 using MvcOnlineTradeAutomation.Data;
 using System.Web;
 using System.Web.Mvc;
+using MvcOnlineTradeAutomation.Models;
 
 namespace MvcOnlineTradeAutomation.Controllers
 {
@@ -14,6 +15,18 @@ namespace MvcOnlineTradeAutomation.Controllers
         {
             var values = c.Categories.ToList();
             return View(values);
+        }
+        [HttpGet]
+        public ActionResult CreateCategory()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateCategory(Category p)
+        {
+            c.Categories.Add(p);
+            c.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
