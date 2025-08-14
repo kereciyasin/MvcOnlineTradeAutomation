@@ -37,5 +37,26 @@ namespace MvcOnlineTradeAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult UpdateProduct(int id)
+        {
+            var product = db.Products.Find(id);
+            ViewBag.Categories = db.Categories.ToList();
+            return View(product);
+        }
+        [HttpPost]
+        public ActionResult UpdateProduct(Product product)
+        {
+            var existingProduct = db.Products.Find(product.ProductID);
+            existingProduct.ProductName = product.ProductName;
+            existingProduct.PurchasePrice = product.PurchasePrice;
+            existingProduct.Stock = product.Stock;
+            existingProduct.CategoryID = product.CategoryID;
+            existingProduct.SalePrice = product.SalePrice;
+            existingProduct.Status = product.Status;
+            existingProduct.ImageUrl = product.ImageUrl;
+            existingProduct.Brand = product.Brand;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

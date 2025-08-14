@@ -43,7 +43,7 @@
                         }
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-sm btn-warning" })
+                        @Html.ActionLink("Edit", "UpdateProduct", new { id = item.ProductID }, new { @class = "btn btn-sm btn-warning" })
                         @using (Html.BeginForm("DeleteProduct", "Product", new { id = item.ProductID }, FormMethod.Post, new { @class = "d-inline" }))
                         {
                             <button type="submit" class="btn btn-sm btn-danger"

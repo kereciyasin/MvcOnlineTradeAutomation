@@ -1,0 +1,64 @@
+﻿@model MvcOnlineTradeAutomation.Models.Product
+@{
+    ViewBag.Title = "UpdateProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container mt-4">
+    <h2 class="mb-3">Update Product</h2>
+
+    <form method="post" action="@Url.Action("CreateProduct","Product")">
+        @Html.HiddenFor(x => x.ProductID)
+        <div class="form-group mb-2">
+            <label>Product Name</label>
+            @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control", placeholder = "e.g., Laptop Pro 15" })
+        </div>
+
+        <div class="form-group mb-2">
+            <label>Brand</label>
+            @Html.TextBoxFor(m => m.Brand, new { @class = "form-control", placeholder = "e.g., TechBrand" })
+        </div>
+
+        <div class="form-group mb-2">
+            <label>Stock</label>
+            @Html.TextBoxFor(m => m.Stock, new { @class = "form-control", type = "number", min = "0" })
+        </div>
+
+        <div class="form-group mb-2">
+            <label>Purchase Price</label>
+            @Html.TextBoxFor(m => m.PurchasePrice, new { @class = "form-control", type = "number", step = "0.01", min = "0" })
+        </div>
+
+        <div class="form-group mb-2">
+            <label>Sale Price</label>
+            @Html.TextBoxFor(m => m.SalePrice, new { @class = "form-control", type = "number", step = "0.01", min = "0" })
+        </div>
+
+        <div class="form-group mb-2">
+            <label>Category</label>
+            @Html.DropDownListFor(m => m.CategoryID,
+                new SelectList((IEnumerable<MvcOnlineTradeAutomation.Models.Category>)ViewBag.Categories, "CategoryID", "CategoryName"),
+                "-- Select Category --",
+                new { @class = "form-control" })
+        </div>
+
+        <div class="form-group mb-3">
+            <label>Image URL</label>
+            @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control", placeholder = "Image enter" })
+        </div>
+
+        <div class="form-check mb-3">
+            <label class="form-check-label">
+                @Html.CheckBoxFor(m => m.Status, new { @class = "form-check-input" }) Active
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+        @Html.ActionLink("Back to List", "Index", "Product", null, new { @class = "btn btn-secondary ml-2" })
+    </form>
+</div>
+
+
+
+
