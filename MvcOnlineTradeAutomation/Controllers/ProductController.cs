@@ -1,4 +1,5 @@
 ﻿using MvcOnlineTradeAutomation.Data;
+using MvcOnlineTradeAutomation.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,20 @@ namespace MvcOnlineTradeAutomation.Controllers
         {
             var products = db.Products.Include("Category").ToList();
             return View(products);
+        }
+        public ActionResult CreateProduct()
+        {
+            ViewBag.Categories = db.Categories.ToList();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateProduct(Product product)
+        {
+
+            db.Products.Add(product);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
     }
 }
