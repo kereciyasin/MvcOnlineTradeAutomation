@@ -1,0 +1,45 @@
+﻿@model List<MvcOnlineTradeAutomation.Models.Department>
+@{
+    ViewBag.Title = "Departments";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Department List</h2>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Department Name</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.DepartmentID</td>
+                    <td>@item.DepartmentName</td>
+                    <td>
+                        <a href="@Url.Action("Details", "Department", new { id = item.DepartmentID })"
+                           class="btn btn-sm btn-info">Details</a>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("UpdateDepartment", "Department", new { id = item.DepartmentID })"
+                           class="btn btn-sm btn-warning">Update</a>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("DeleteDepartment", "Department", new { id = item.DepartmentID })"
+                           class="btn btn-sm btn-danger"
+                           onclick="return confirm('Are you sure you want to delete this department?');">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="@Url.Action("CreateDepartment", "Department")" class="btn btn-primary">Add New Department</a>
+</div>

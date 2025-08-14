@@ -14,6 +14,7 @@ namespace MvcOnlineTradeAutomation.Models
         [Column(TypeName = "varchar")]
         [StringLength(30)]
         public string DepartmentName { get; set; }
+        public bool Status { get; set; }
         // One department has many employees
         public virtual ICollection<Employee> Employees { get; set; }
     }
