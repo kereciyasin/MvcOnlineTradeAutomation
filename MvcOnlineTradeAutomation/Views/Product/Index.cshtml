@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MvcOnlineTradeAutomation.Models.Product>
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Product List</h2>
+        @Html.ActionLink("Add New Product", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Product</th>
+                <th>Brand</th>
+                <th>Stock</th>
+                <th>Purchase Price</th>
+                <th>Sale Price</th>
+                <th>Category</th>
+                <th>Image</th>
+                <th style="width:150px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductID</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Brand</td>
+                    <td>@item.Stock</td>
+                    <td>@item.PurchasePrice.ToString("C")</td>
+                    <td>@item.SalePrice.ToString("C")</td>
+                    <td>@item.Category.CategoryName</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <img src="@item.ImageUrl" alt="Product Image" style="width:60px; height:auto;" />
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-sm btn-warning" })
+                        @using (Html.BeginForm("Delete", "Product", new { id = item.ProductID }, FormMethod.Post, new { @class = "d-inline" }))
+                        {
+                            <button type="submit" class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete this product?');">
+                                Delete
+                            </button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
