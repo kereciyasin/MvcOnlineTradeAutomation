@@ -13,7 +13,7 @@ namespace MvcOnlineTradeAutomation.Controllers
         Context db = new Context();
         public ActionResult Index()
         {
-            var products = db.Products.Include("Category").ToList();
+            var products = db.Products.Where(x => x.Status == true).ToList();
             return View(products);
         }
         public ActionResult CreateProduct()
@@ -29,6 +29,13 @@ namespace MvcOnlineTradeAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
 
+        }
+        public ActionResult DeleteProduct(int id)
+        {
+            var product = db.Products.Find(id);
+            product.Status = false;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
