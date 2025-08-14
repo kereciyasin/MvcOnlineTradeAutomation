@@ -36,5 +36,19 @@ namespace MvcOnlineTradeAutomation.Controllers
             c.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult UpdateCategory(int id)
+        {
+            var category = c.Categories.Find(id);
+            return View(category);
+        }
+        [HttpPost]
+        public ActionResult UpdateCategory(Category p)
+        {
+            var category = c.Categories.Find(p.CategoryID);
+            category.CategoryName = p.CategoryName;
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
