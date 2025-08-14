@@ -28,5 +28,13 @@ namespace MvcOnlineTradeAutomation.Controllers
             c.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult DeleteCategory(int id)
+        {
+            var category = c.Categories.Find(id);
+            c.Categories.Remove(category);
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
