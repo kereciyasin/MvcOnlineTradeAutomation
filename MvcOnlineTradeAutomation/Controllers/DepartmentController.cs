@@ -60,8 +60,9 @@ namespace MvcOnlineTradeAutomation.Controllers
         public ActionResult EmployeeSales(int id)
         {
             var value = db.SalesTransactions.Where(x => x.EmployeeID == id).ToList();
+            var per = db.Employees.Where(x => x.EmployeeID == id).Select(y => y.FirstName + " " + y.LastName).FirstOrDefault();
+            ViewBag.EmployeeName = per;
             return View(value);
-
         }
     }
 }

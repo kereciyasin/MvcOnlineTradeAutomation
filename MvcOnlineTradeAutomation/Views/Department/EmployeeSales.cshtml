@@ -1,38 +1,47 @@
 ﻿@model List<MvcOnlineTradeAutomation.Models.SalesTransaction>
 @{
-    ViewBag.Title = "EmployeeSales";
+    ViewBag.Title = "Employee Sales";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <br />
-<h2>Employee Sales</h2>
 <br />
 
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Personel Name: @ViewBag.DepartmentName</li>
+    <li class="breadcrumb-item active">Employee Sales Name: @ViewBag.EmployeeName</li>
 </ol>
 
-<table class="table table-codensed">
-    <tr>
-        <th>Satis Id</th>
-        <th>Ürün</th>
-        <th>Cari</th>
-        <th>Ürün</th>
-        <th>Adet</th>
-        <th>Toplam</th>
-        <th>Tarih</th>
-    </tr>
-    @foreach (var item in Model)
-    {
+<table class="table table-condensed table-bordered table-hover">
+    <thead class="table-dark">
         <tr>
-            <td>@item.SalesTransactionID</td>
-            <td>@item.Product.ProductName</td>
-            <td>@item.Customer.FirstName + @item.Customer.LastName</td>
-            <td>@item.Quantity</td>
-            <td>@item.Price</td>
-            <td>@item.TotalAmount</td>
-            <td>@item.Date</td>
-
+            <th>Sale ID</th>
+            <th>Product</th>
+            <th>Customer</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Date</th>
+            <th>Print</th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.SalesTransactionID</td>
+                <td>@item.Product.ProductName</td>
+                <td>@(item.Customer.FirstName + " " + item.Customer.LastName)</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price.ToString("C")</td>
+                <td>@item.TotalAmount.ToString("C")</td>
+                <td>@item.Date.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a href="@Url.Action("Print", "SalesTransaction", new { id = item.SalesTransactionID })"
+                       class="btn btn-sm btn-info">
+                        <i class="fas fa-print"></i> Print
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
