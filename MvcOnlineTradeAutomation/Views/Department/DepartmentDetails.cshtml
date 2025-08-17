@@ -6,8 +6,12 @@
 
 <div class="container mt-4">
     <h2>Department Details</h2>
-    <hr />
+    <br />
 
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Department Name: @ViewBag.DepartmentName</li>
+    </ol>
+    <br />
     <table class="table table-bordered table-hover align-middle">
         <thead class="table-dark">
             <tr>
@@ -37,11 +41,11 @@
                         }
                     </td>
                     <td>
-                        @* Çalışanın satışlarını gösteren sayfaya gider *@
+
                         @Html.ActionLink(
                             "View Sales",
-                            "EmployeeSales",      // aşağıdaki action
-                            "Department",         // aynı controller
+                            "EmployeeSales",
+                            "Department",
                             new { id = item.EmployeeID },
                             new { @class = "btn btn-sm btn-info" }
                         )
