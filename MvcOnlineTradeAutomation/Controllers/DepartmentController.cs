@@ -31,7 +31,7 @@ namespace MvcOnlineTradeAutomation.Controllers
         public ActionResult DeleteDepartment(int id)
         {
             var department = db.Departments.Find(id);
-            db.Departments.Remove(department);
+            department.Status = false; // Soft delete
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -39,13 +39,14 @@ namespace MvcOnlineTradeAutomation.Controllers
         public ActionResult UpdateDepartment(int id)
         {
             var department = db.Departments.Find(id);
-            return View(department);
+            return View("UpdateDepartment", department);
         }
         [HttpPost]
         public ActionResult UpdateDepartment(Department department)
         {
             var existingDepartment = db.Departments.Find(department.DepartmentID);
             existingDepartment.DepartmentName = department.DepartmentName;
+            existingDepartment.Status = department.Status; // Assuming you want to keep the status field
             db.SaveChanges();
             return RedirectToAction("Index");
         }

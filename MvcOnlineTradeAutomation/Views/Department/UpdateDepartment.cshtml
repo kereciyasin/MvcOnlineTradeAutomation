@@ -8,18 +8,16 @@
     <h2>Update Department</h2>
     <hr />
 
-    @using (Html.BeginForm("UpdateCategory", "Department ", FormMethod.Post))
+    @using (Html.BeginForm("UpdateDepartment", "Department", FormMethod.Post))
     {
         @Html.HiddenFor(x => x.DepartmentID)
 
         <div class="form-group mb-3">
             @Html.LabelFor(x => x.DepartmentName, "Department Name", new { @class = "form-label" })
-            @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control", placeholder = "Enter Department name" })
+            @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control", placeholder = "Enter department name" })
         </div>
 
         <button type="submit" class="btn btn-warning">Update</button>
         @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary ms-2" })
     }
 </div>
-
-
