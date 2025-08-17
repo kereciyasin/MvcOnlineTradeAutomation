@@ -23,6 +23,8 @@ namespace MvcOnlineTradeAutomation.Models
         [StringLength(50)]
         public string Email { get; set; }
 
+        public bool Status { get; set; }
+
         public virtual ICollection<SalesTransaction> SalesTransactions { get; set; }
 
 
