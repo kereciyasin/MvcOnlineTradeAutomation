@@ -1,0 +1,34 @@
+﻿@model MvcOnlineTradeAutomation.Models.Customer
+@{
+    ViewBag.Title = "Create Customer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Create Customer</h2>
+
+    <form method="post" action="@Url.Action("CreateCustomer","Customer")">
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.FirstName, "First Name", new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Enter first name" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.LastName, "Last Name", new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Enter last name" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.City, "City", new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "Enter city" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Email, "Email", new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "name@example.com" })
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        @Html.ActionLink("Back to List", "Index", "Customer", null, new { @class = "btn btn-secondary ml-2" })
+    </form>
+</div>
