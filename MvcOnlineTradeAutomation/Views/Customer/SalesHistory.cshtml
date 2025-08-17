@@ -1,0 +1,49 @@
+﻿@model List<MvcOnlineTradeAutomation.Models.SalesTransaction>
+@{
+    ViewBag.Title = "SalesHistory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Customer Sales History</h2>
+
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Customer: @ViewBag.CustomerName</li>
+    </ol>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Sale ID</th>
+                <th>Product</th>
+                <th>Employee</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total Amount</th>
+                <th>Date</th>
+                <th>Print</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.SalesTransactionID</td>
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.Employee.FirstName @item.Employee.LastName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@item.TotalAmount.ToString("C")</td>
+                    <td>@item.Date.ToShortDateString()</td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-info">
+                            <i class="fas fa-print"></i> Print
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

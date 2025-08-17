@@ -35,7 +35,7 @@
                                 <td class="text-truncate" style="max-width:280px;">@item.Email</td>
                                 <td class="text-center">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
-                                        <a href="@Url.Action("CustomerSales","Customer", new { id = item.CustomerID })" class="btn btn-info">
+                                        <a href="@Url.Action("SalesHistory","Customer", new { id = item.CustomerID })" class="btn btn-info">
                                             <i class="fas fa-info-circle"></i> Sales History
                                         </a>
                                         <a href="@Url.Action("UpdateCustomer","Customer", new { id = item.CustomerID })" class="btn btn-warning">

@@ -56,5 +56,20 @@ namespace MvcOnlineTradeAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult SalesHistory(int id)
+        {
+            var sales = db.SalesTransactions
+                          .Where(x => x.CustomerID == id)
+                          .ToList();
+
+            var customer = db.Customers
+                 .Where(x => x.CustomerID == id)
+                 .Select(y => y.FirstName + " " + y.LastName)
+                 .FirstOrDefault();
+
+            ViewBag.CustomerName = customer;
+
+            return View(sales);
+        }
     }
 }
