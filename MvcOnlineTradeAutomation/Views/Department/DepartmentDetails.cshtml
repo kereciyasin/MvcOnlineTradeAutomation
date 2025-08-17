@@ -1,0 +1,55 @@
+﻿@model List<MvcOnlineTradeAutomation.Models.Employee>
+@{
+    ViewBag.Title = "Department Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Department Details</h2>
+    <hr />
+
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Image</th>
+                <th>Sales</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.EmployeeID</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>
+                        @if (!string.IsNullOrWhiteSpace(item.ImageUrl))
+                        {
+                            <img src="@item.ImageUrl" alt="@($"{item.FirstName} {item.LastName}")"
+                                 style="width:56px;height:56px;object-fit:cover;border-radius:8px;" />
+                        }
+                        else
+                        {
+                            <span class="text-muted">No image</span>
+                        }
+                    </td>
+                    <td>
+                        @* Çalışanın satışlarını gösteren sayfaya gider *@
+                        @Html.ActionLink(
+                            "View Sales",
+                            "EmployeeSales",      // aşağıdaki action
+                            "Department",         // aynı controller
+                            new { id = item.EmployeeID },
+                            new { @class = "btn btn-sm btn-info" }
+                        )
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @Html.ActionLink("Back to Departments", "Index", null, new { @class = "btn btn-secondary" })
+</div>

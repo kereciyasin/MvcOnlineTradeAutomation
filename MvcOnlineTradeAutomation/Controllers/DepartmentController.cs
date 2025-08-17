@@ -50,5 +50,11 @@ namespace MvcOnlineTradeAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult DepartmentDetails(int id)
+        {
+            var department = db.Employees.Where(x => x.DepartmentID == id).ToList();
+            return View(department);
+        }
+
     }
 }
