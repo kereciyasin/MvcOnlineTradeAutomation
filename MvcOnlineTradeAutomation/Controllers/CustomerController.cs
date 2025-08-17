@@ -35,5 +35,22 @@ namespace MvcOnlineTradeAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult UpdateCustomer(int id)
+        {
+            var customer = db.Customers.Find(id);
+            return View(customer);
+        }
+        [HttpPost]
+        public ActionResult UpdateCustomer(Customer customer)
+        {
+            var existingCustomer = db.Customers.Find(customer.CustomerID);
+
+            existingCustomer.FirstName = customer.FirstName;
+            existingCustomer.LastName = customer.LastName;
+            existingCustomer.City = customer.City;
+            existingCustomer.Email = customer.Email;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
