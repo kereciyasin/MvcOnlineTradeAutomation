@@ -43,6 +43,10 @@ namespace MvcOnlineTradeAutomation.Controllers
         [HttpPost]
         public ActionResult UpdateCustomer(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(customer); // Return the view with validation errors
+            }
             var existingCustomer = db.Customers.Find(customer.CustomerID);
 
             existingCustomer.FirstName = customer.FirstName;

@@ -15,26 +15,28 @@
         <div class="form-group mb-3">
             @Html.LabelFor(m => m.FirstName, "First Name", new { @class = "form-label" })
             @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Enter first name" })
+            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
         </div>
 
         <div class="form-group mb-3">
             @Html.LabelFor(m => m.LastName, "Last Name", new { @class = "form-label" })
             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Enter last name" })
+            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
         </div>
-
 
         <div class="form-group mb-3">
             @Html.LabelFor(m => m.City, "City", new { @class = "form-label" })
             @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "Enter city" })
+            @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
         </div>
 
         <div class="form-group mb-3">
             @Html.LabelFor(m => m.Email, "Email", new { @class = "form-label" })
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter email" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
         </div>
 
         <button type="submit" class="btn btn-warning">Update</button>
         @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary ms-2" })
     }
 </div>
-
