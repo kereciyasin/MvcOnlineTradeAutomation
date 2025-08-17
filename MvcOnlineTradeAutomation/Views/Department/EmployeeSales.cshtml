@@ -1,0 +1,38 @@
+﻿@model List<MvcOnlineTradeAutomation.Models.SalesTransaction>
+@{
+    ViewBag.Title = "EmployeeSales";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Employee Sales</h2>
+<br />
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Personel Name: @ViewBag.DepartmentName</li>
+</ol>
+
+<table class="table table-codensed">
+    <tr>
+        <th>Satis Id</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Ürün</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.SalesTransactionID</td>
+            <td>@item.Product.ProductName</td>
+            <td>@item.Customer.FirstName + @item.Customer.LastName</td>
+            <td>@item.Quantity</td>
+            <td>@item.Price</td>
+            <td>@item.TotalAmount</td>
+            <td>@item.Date</td>
+
+        </tr>
+    }
+</table>

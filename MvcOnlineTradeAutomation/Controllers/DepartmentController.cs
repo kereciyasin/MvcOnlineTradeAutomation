@@ -57,6 +57,11 @@ namespace MvcOnlineTradeAutomation.Controllers
             ViewBag.DepartmentName = dpt;
             return View(department);
         }
+        public ActionResult EmployeeSales(int id)
+        {
+            var value = db.SalesTransactions.Where(x => x.EmployeeID == id).ToList();
+            return View(value);
 
+        }
     }
 }
