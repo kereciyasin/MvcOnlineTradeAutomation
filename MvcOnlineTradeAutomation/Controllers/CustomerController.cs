@@ -13,7 +13,7 @@ namespace MvcOnlineTradeAutomation.Controllers
         Context db = new Context();
         public ActionResult Index()
         {
-            var values = db.Customers.ToList();
+            var values = db.Customers.Where(x => x.Status == true).ToList();
             return View(values);
         }
         public ActionResult CreateCustomer()
@@ -23,6 +23,7 @@ namespace MvcOnlineTradeAutomation.Controllers
         [HttpPost]
         public ActionResult CreateCustomer(Customer customer)
         {
+            customer.Status = true; // Assuming new customers are active by default 
             db.Customers.Add(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -30,8 +31,7 @@ namespace MvcOnlineTradeAutomation.Controllers
         public ActionResult DeleteCustomer(int id)
         {
             var customer = db.Customers.Find(id);
-
-            db.Customers.Remove(customer);
+            customer.Status = false; // Soft delete by setting status to false
             db.SaveChanges();
             return RedirectToAction("Index");
         }
