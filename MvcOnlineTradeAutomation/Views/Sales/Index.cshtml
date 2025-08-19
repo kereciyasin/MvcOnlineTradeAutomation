@@ -1,0 +1,48 @@
+﻿@model List<MvcOnlineTradeAutomation.Models.SalesTransaction>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Sales Transactions</h2>
+        @Html.ActionLink("Create New Sale", "CreateSale", null, new { @class = "btn btn-primary" })
+    </div>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Product</th>
+                <th>Customer</th>
+                <th>Employee</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total Amount</th>
+                <th>Date</th>
+                <th style="width: 150px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.SalesTransactionID</td>
+                    <td>@item.Product.ProductName</td>
+                    <td>@item.Customer.FirstName @item.Customer.LastName</td>
+                    <td>@item.Employee.FirstName @item.Employee.LastName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price.ToString("C")</td>
+                    <td>@item.TotalAmount.ToString("C")</td>
+                    <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @Html.ActionLink("Edit", "UpdateSale", new { id = item.SalesTransactionID }, new { @class = "btn btn-sm btn-warning" })
+                        @Html.ActionLink("Details", "Details", new { id = item.SalesTransactionID }, new { @class = "btn btn-sm btn-info" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
