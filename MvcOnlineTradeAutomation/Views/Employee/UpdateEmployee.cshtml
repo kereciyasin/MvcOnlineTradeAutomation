@@ -1,0 +1,40 @@
+﻿@model MvcOnlineTradeAutomation.Models.Employee
+@{
+    ViewBag.Title = "UpdateEmployee";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Update Employee</h2>
+    <hr />
+
+    @using (Html.BeginForm("UpdateEmployee", "Employee", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.EmployeeID)
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.FirstName, "First Name", new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Enter first name" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.LastName, "Last Name", new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Enter last name" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.ImageUrl, "Image URL", new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control", placeholder = "Enter image URL" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.Label("Department", new { @class = "form-label" })
+            @Html.DropDownListFor(m => m.DepartmentID,
+                (List<SelectListItem>)ViewBag.value1,
+                "Select Department",
+                new { @class = "form-control" })
+        </div>
+        <button type="submit" class="btn btn-warning">Update</button>
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary ms-2" })
+    }
+</div>
