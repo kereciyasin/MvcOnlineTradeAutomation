@@ -18,6 +18,13 @@ namespace MvcOnlineTradeAutomation.Controllers
         [HttpGet]
         public ActionResult CreateEmployee()
         {
+            List<SelectListItem> value = (from x in db.Employees.ToList()
+                                          select new SelectListItem
+                                          {
+                                              Text = x.Department.DepartmentName,
+                                              Value = x.DepartmentID.ToString()
+                                          }).ToList();
+            ViewBag.value1 = value;
             return View();
         }
         [HttpPost]
