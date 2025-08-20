@@ -45,10 +45,10 @@ namespace MvcOnlineTradeAutomation.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreateSale(SalesTransaction salesTransaction)
+        public ActionResult CreateSale(SalesTransaction s)
         {
-
-            db.SalesTransactions.Add(salesTransaction);
+            s.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
+            db.SalesTransactions.Add(s);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

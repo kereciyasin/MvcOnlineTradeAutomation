@@ -1,8 +1,51 @@
-﻿
+﻿@model MvcOnlineTradeAutomation.Models.SalesTransaction
 @{
     ViewBag.Title = "CreateSale";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>CreateSale</h2>
+<div class="container mt-4">
+    <h2 class="mb-3">Create Sale</h2>
+    <hr />
+
+    @using (Html.BeginForm("CreateSale", "Sales", FormMethod.Post))
+    {
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.ProductID, "Product", new { @class = "form-label" })
+            @Html.DropDownListFor(m => m.ProductID, (List<SelectListItem>)ViewBag.products,
+                                  "Select a product", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.CustomerID, "Customer", new { @class = "form-label" })
+            @Html.DropDownListFor(m => m.CustomerID, (List<SelectListItem>)ViewBag.customers,
+                                  "Select a customer", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.EmployeeID, "Employee", new { @class = "form-label" })
+            @Html.DropDownListFor(m => m.EmployeeID, (List<SelectListItem>)ViewBag.employees,
+                                  "Select an employee", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Quantity, "Quantity", new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", placeholder = "Enter quantity" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.Price, "Price", new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control", placeholder = "Enter price" })
+        </div>
+
+        <div class="form-group mb-3">
+            @Html.LabelFor(m => m.TotalAmount, "Total Amount", new { @class = "form-label" })
+            @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control", placeholder = "Enter total amount" })
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary ms-2" })
+    }
+</div>
+
 
