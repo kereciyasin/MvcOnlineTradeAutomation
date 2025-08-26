@@ -38,7 +38,7 @@
                     <td>@item.Date.ToString("dd/MM/yyyy")</td>
                     <td>
                         @Html.ActionLink("Edit", "UpdateSale", new { id = item.SalesTransactionID }, new { @class = "btn btn-sm btn-warning" })
-                        @Html.ActionLink("Details", "Details", new { id = item.SalesTransactionID }, new { @class = "btn btn-sm btn-info" })
+                        @Html.ActionLink("Details", "SalesDetails", new { id = item.SalesTransactionID }, new { @class = "btn btn-sm btn-info" })
                     </td>
                 </tr>
             }

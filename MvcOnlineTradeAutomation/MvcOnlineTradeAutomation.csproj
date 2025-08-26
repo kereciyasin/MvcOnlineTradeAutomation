@@ -314,6 +314,8 @@
     <Content Include="Views\Employee\UpdateEmployee.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
     <Content Include="Views\Sales\CreateSale.cshtml" />
+    <Content Include="Views\Sales\UpdateSale.cshtml" />
+    <Content Include="Views\Sales\SalesDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
