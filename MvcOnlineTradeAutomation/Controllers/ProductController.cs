@@ -58,5 +58,10 @@ namespace MvcOnlineTradeAutomation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult ProductList()
+        {
+            var values = db.Products.ToList();
+            return View(values);
+        }
     }
 }
