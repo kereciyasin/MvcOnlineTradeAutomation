@@ -1,0 +1,47 @@
+﻿@model List<MvcOnlineTradeAutomation.Models.Invoice>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Invoices</h2>
+        @Html.ActionLink("Create New Invoice", "Create", "Invoice", null, new { @class = "btn btn-primary" })
+    </div>
+
+    <table class="table table-bordered table-striped table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Serial No</th>
+                <th>Sequence No</th>
+                <th>Date</th>
+                <th>Tax Office</th>
+                <th>Time</th>
+                <th>Delivered By</th>
+                <th>Received By</th>
+                <th style="width:160px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.InvoiceID</td>
+                    <td>@x.InvoiceSerialNumber</td>
+                    <td>@x.InvoiceSequenceNumber</td>
+                    <td>@x.Date.ToString("yyyy-MM-dd")</td>
+                    <td>@x.TaxOffice</td>
+                    <td>@x.Time.ToString("HH:mm")</td>
+                    <td>@x.DeliveredBy</td>
+                    <td>@x.ReceivedBy</td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = x.InvoiceID }, new { @class = "btn btn-sm btn-info me-1" })
+                        @Html.ActionLink("Edit", "Edit", new { id = x.InvoiceID }, new { @class = "btn btn-sm btn-warning" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
