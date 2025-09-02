@@ -21,6 +21,7 @@
                 <th>Time</th>
                 <th>Delivered By</th>
                 <th>Received By</th>
+                <th>Total Amount</th>
                 <th style="width:160px;">Actions</th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
                     <td>@x.Time.ToString("HH:mm")</td>
                     <td>@x.DeliveredBy</td>
                     <td>@x.ReceivedBy</td>
+                    <td>@x.TotalAmount</td>
                     <td>
                         @Html.ActionLink("Details", "Details", new { id = x.InvoiceID }, new { @class = "btn btn-sm btn-info me-1" })
                         @Html.ActionLink("Edit", "Edit", new { id = x.InvoiceID }, new { @class = "btn btn-sm btn-warning" })

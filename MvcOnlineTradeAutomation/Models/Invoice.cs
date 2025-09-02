@@ -32,6 +32,8 @@ namespace MvcOnlineTradeAutomation.Models
         [Column(TypeName = "varchar")]
         [StringLength(30)]
         public string ReceivedBy { get; set; }
+        public decimal? TotalAmount { get; set; }
+
 
         // Invoice items are related to the Invoice
         public ICollection<InvoiceItem> InvoiceItems { get; set; }
